@@ -4,13 +4,13 @@
     define('textAngular', ["rangy","rangy/lib/rangy-selectionsaverestore"], function (a0,b1) {
       return (root['textAngular.name'] = factory(a0,b1));
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory(require("rangy"),require("rangy/lib/rangy-selectionsaverestore"));
   } else {
-    root['textAngular'] = factory(rangy);
+    root['textAngular'] = factory(root["rangy"]);
   }
 }(this, function (rangy) {
 
@@ -3159,7 +3159,7 @@ angular.module('textAngular.taBind', ['textAngular.factories', 'textAngular.DOM'
                         var _subnodes = listNode.childNodes;
                         tablevel++;
                         // tab out and add the <ul> or <ol> html piece
-                        _html += _repeat('\t', tablevel-1) + listNode.outerHTML.substring(0, 4);
+                        _html += _repeat('\t', tablevel-1) + listNode.outerHTML.substring(0, listNode.outerHTML.indexOf('>') + 1);
                         forEach(_subnodes, function (index, node) {
                             /* istanbul ignore next: browser catch */
                             var nodeName = node.nodeName.toLowerCase();
