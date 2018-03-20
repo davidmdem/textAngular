@@ -1706,6 +1706,9 @@ angular.module('textAngular.taBind', ['textAngular.factories', 'textAngular.DOM'
             if (/<img[^>]+>/.test(_blankVal)) {
                 return false;
             }
+            if (/<iframe[^>]+>/.test(_blankVal)) {
+                return false;
+            }
             return true;
         } else {
             return false;
